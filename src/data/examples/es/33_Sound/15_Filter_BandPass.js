@@ -32,7 +32,7 @@ function draw() {
   background(30);
 
   // mapea la posición horizontal del ratón (mouseX) a una frecuencia de pasabanda dentro del rango del espectro FFT: 10Hz - 22050Hz
-  filterFreq = map (mouseX, 0, width, 10, 22050);
+  filterFreq = map(mouseX, 0, width, 10, 22050);
   // mapea la posición vertical del ratón (mouseY) a la razón resonancia/ancho
   filterWidth = map(mouseY, 0, height, 0, 90);
   // definir los parámetros del filtor
@@ -43,9 +43,9 @@ function draw() {
   // h = energía / amplitud en esa frecuencia
   let spectrum = fft.analyze();
   noStroke();
-  for (let i = 0; i< spectrum.length; i++){
+  for (let i = 0; i < spectrum.length; i++) {
     let x = map(i, 0, spectrum.length, 0, width);
     let h = -height + map(spectrum[i], 0, 255, height, 0);
-    rect(x, height, width/spectrum.length, h) ;
+    rect(x, height, width / spectrum.length, h);
   }
 }

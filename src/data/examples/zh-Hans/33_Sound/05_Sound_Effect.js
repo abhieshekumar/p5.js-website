@@ -10,6 +10,32 @@
 // Doorbell sample by Corsica_S via freesound.org,
 // Creative Commons BY 3.0
 
+// A Class to describe a "doorbell" (really a button)
+class Doorbell {
+  constructor(x_, y_, r_) {
+    // Location and size
+    this.x = x_;
+    this.y = y_;
+    this.r = r_;
+  }
+  // Is a point inside the doorbell? (used for mouse rollover, etc.)
+  contains(mx, my) {
+    return dist(mx, my, this.x, this.y) < this.r;
+  }
+
+  // Show the doorbell (hardcoded colors, could be improved)
+  display(mx, my) {
+    if (this.contains(mx, my)) {
+      fill(100);
+    } else {
+      fill(175);
+    }
+    stroke(0);
+    strokeWeight(4);
+    ellipse(this.x, this.y, this.r, this.r);
+  }
+}
+
 // A sound file object
 let dingdong;
 
@@ -25,7 +51,7 @@ function setup() {
   dingdong = loadSound('assets/doorbell.mp3');
 
   // Create a new doorbell
-  doorbell = new Doorbell(width/2, height/2, 64);
+  doorbell = new Doorbell(width / 2, height / 2, 64);
 }
 
 function draw() {
@@ -40,35 +66,3 @@ function mousePressed() {
     dingdong.play();
   }
 }
-
-// A Class to describe a "doorbell" (really a button)
-class Doorbell {
-  
-  constructor(x_, y_, r_){
-    // Location and size
-    this.x = x_;
-    this.y = y_;
-    this.r = r_;
-  }
-
-  // Is a point inside the doorbell? (used for mouse rollover, etc.)
-  contains(mx, my) {
-    if (dist(mx, my, this.x, this.y) < this.r) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  // Show the doorbell (hardcoded colors, could be improved)
-  display(mx, my) {
-    if (this.contains(mx, my)) {
-      fill(100);
-    } else {
-      fill(175);
-    }
-    stroke(0);
-    strokeWeight(4);
-    ellipse(this.x, this.y, this.r, this.r);
-  };
-};

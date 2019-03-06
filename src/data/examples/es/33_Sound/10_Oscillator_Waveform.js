@@ -12,7 +12,7 @@ function setup() {
   createCanvas(720, 256);
 
   osc = new p5.TriOsc(); // definir frecuencia y tipo
-  osc.amp(.5);
+  osc.amp(0.5);
 
   fft = new p5.FFT();
   osc.start();
@@ -21,10 +21,10 @@ function setup() {
 function draw() {
   background(255);
 
-  let waveform = fft.waveform();  // analiza la forma de onda
+  let waveform = fft.waveform(); // analiza la forma de onda
   beginShape();
   strokeWeight(5);
-  for (let i = 0; i < waveform.length; i++){
+  for (let i = 0; i < waveform.length; i++) {
     let x = map(i, 0, waveform.length, 0, width);
     let y = map(waveform[i], -1, 1, height, 0);
     vertex(x, y);
@@ -36,6 +36,6 @@ function draw() {
   osc.freq(freq);
 
   // cambia la amplitud del oscilador según mouseY
-  let amp = map(mouseY, 0, height, 1, .01);
+  let amp = map(mouseY, 0, height, 1, 0.01);
   osc.amp(amp);
 }

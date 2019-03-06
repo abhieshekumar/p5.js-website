@@ -32,10 +32,9 @@ let modulator; // this oscillator will modulate the amplitude of the carrier
 let fft; // we'll visualize the waveform
 
 function setup() {
-  createCanvas(800,400);
+  createCanvas(800, 400);
   noFill();
   background(30); // alpha
-
 
   carrier = new p5.Oscillator(); // connects to master output by default
   carrier.freq(340);
@@ -45,21 +44,21 @@ function setup() {
   carrier.start();
 
   modulator = new p5.Oscillator('triangle');
-  modulator.disconnect();  // disconnect the modulator from master output
+  modulator.disconnect(); // disconnect the modulator from master output
   modulator.freq(5);
   modulator.amp(1);
   modulator.start();
 
   // Modulate the carrier's amplitude with the modulator
   // Optionally, we can scale the signal.
-  carrier.amp(modulator.scale(-1,1,1,-1));
+  carrier.amp(modulator.scale(-1, 1, 1, -1));
 
   // create an fft to analyze the audio
   fft = new p5.FFT();
 }
 
 function draw() {
-  background(30,30,30,100); // alpha
+  background(30, 30, 30, 100); // alpha
 
   // map mouseY to moodulator freq between 0 and 20hz
   let modFreq = map(mouseY, 0, height, 20, 0);
@@ -81,10 +80,10 @@ function drawWaveform() {
   stroke(240);
   strokeWeight(4);
   beginShape();
-  for (let i = 0; i<waveform.length; i++){
+  for (let i = 0; i < waveform.length; i++) {
     let x = map(i, 0, waveform.length, 0, width);
-    let y = map(waveform[i], -1, 1, -height/2, height/2);
-    vertex(x, y + height/2);
+    let y = map(waveform[i], -1, 1, -height / 2, height / 2);
+    vertex(x, y + height / 2);
   }
   endShape();
 }

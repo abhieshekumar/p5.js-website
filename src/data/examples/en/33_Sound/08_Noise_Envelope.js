@@ -44,9 +44,9 @@ function draw() {
   let level = analyzer.getLevel();
 
   // use level to draw a green rectangle
-  let levelHeight = map(level, 0, .4, 0, height);
-  fill(100,250,100);
-  rect(0, height, width, - levelHeight);
+  let levelHeight = map(level, 0, 0.4, 0, height);
+  fill(100, 250, 100);
+  rect(0, height, width, -levelHeight);
 }
 
 function mousePressed() {

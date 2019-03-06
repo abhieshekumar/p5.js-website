@@ -32,5 +32,5 @@ function draw() {
 
   // dibuja una elipse con altura según el volumen
   let h = map(vol, 0, 1, height, 0);
-  ellipse(width/2, h - 25, 50, 50);
+  ellipse(width / 2, h - 25, 50, 50);
 }

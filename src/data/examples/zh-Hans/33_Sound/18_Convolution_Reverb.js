@@ -20,7 +20,6 @@ let currentIR = 0;
 let rawImpulse;
 
 function preload() {
-
   // we have included both MP3 and OGG versions of all the impulses/sounds
   soundFormats('ogg', 'mp3');
 
@@ -52,21 +51,20 @@ function setup() {
 
 function draw() {
   background(30);
-  fill(0,255,40);
+  fill(0, 255, 40);
 
   let spectrum = fft.analyze();
 
   // Draw every value in the frequencySpectrum array as a rectangle
   noStroke();
-  for (let i = 0; i< spectrum.length; i++){
+  for (let i = 0; i < spectrum.length; i++) {
     let x = map(i, 0, spectrum.length, 0, width);
     let h = -height + map(spectrum[i], 0, 255, height, 0);
-    rect(x, height, width/spectrum.length, h) ;
+    rect(x, height, width / spectrum.length, h);
   }
 }
 
 function mousePressed() {
-
   // cycle through the array of cVerb.impulses
   currentIR++;
   if (currentIR >= cVerb.impulses.length) {

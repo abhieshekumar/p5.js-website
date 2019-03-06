@@ -41,7 +41,7 @@ function draw() {
 
   // Mapea la posición horizontal del ratón (mouseX) a la frecuencia de corte desde
   // la frecuencia más grave (10Hz) a la más aguda (22050Hz) que los humanos escuchan
-  filterFreq = map (mouseX, 0, width, 10, 22050);
+  filterFreq = map(mouseX, 0, width, 10, 22050);
 
   // Mapea la posición vertical del ratón (mouseY) a la resonancia (aumento de volumen) en la frecuencia de corte
   filterRes = map(mouseY, 0, height, 15, 5);
@@ -54,10 +54,9 @@ function draw() {
   // h = energía (amplitud / volumen) en esa frecuencia
   let spectrum = fft.analyze();
   noStroke();
-  for (let i = 0; i< spectrum.length; i++){
+  for (let i = 0; i < spectrum.length; i++) {
     let x = map(i, 0, spectrum.length, 0, width);
     let h = -height + map(spectrum[i], 0, 255, height, 0);
-    rect(x, height, width/spectrum.length, h) ;
+    rect(x, height, width / spectrum.length, h);
   }
-
 }

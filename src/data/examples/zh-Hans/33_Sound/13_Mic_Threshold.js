@@ -31,7 +31,7 @@ function draw() {
   if (volume > threshold) {
     stroke(0);
     fill(0, 100);
-    rect(random(40, width), random(height), volume*50, volume*50);
+    rect(random(40, width), random(height), volume * 50, volume * 50);
   }
 
   // Graph the overall potential volume, w/ a line at the threshold

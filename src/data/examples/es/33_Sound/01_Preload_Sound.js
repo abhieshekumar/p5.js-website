@@ -19,15 +19,16 @@ function preload() {
 function setup() {
   createCanvas(710, 200);
   song.loop(); // la canción está lista para ser reproducida durante setup() porque fue cargada durante preload()
-  background(0,255,0);
+  background(0, 255, 0);
 }
 
 function mousePressed() {
-  if ( song.isPlaying() ) { // .isPlaying() retorna una variable booleana
+  if (song.isPlaying()) {
+    // .isPlaying() retorna una variable booleana
     song.pause(); // .play() continuará la reproducción desde la posición definida por .pause()
-    background(255,0,0);
+    background(255, 0, 0);
   } else {
     song.play();
-    background(0,255,0);
+    background(0, 255, 0);
   }
 }

@@ -26,16 +26,14 @@
  * <a href="http://p5js.org/reference/#/libraries/p5.sound">biblioteca p5.sound</a>
  * para que este ejemplo funcione en tu proyecto propio.</em></span></p>
  */
- 
 let carrier; // este es el oscilador que escucharemos
 let modulator; // este oscilador modulará la amplitud de la portadora
 let fft; // visualizaremos la forma de onda
 
 function setup() {
-  createCanvas(800,400);
+  createCanvas(800, 400);
   noFill();
   background(30); // alpha
-
 
   carrier = new p5.Oscillator(); // se conecta la salida a la salida maestra por defecto
   carrier.freq(340);
@@ -45,21 +43,21 @@ function setup() {
   carrier.start();
 
   modulator = new p5.Oscillator('triangle');
-  modulator.disconnect();  // desconecta la moduladora de la salida maestra
+  modulator.disconnect(); // desconecta la moduladora de la salida maestra
   modulator.freq(5);
   modulator.amp(1);
   modulator.start();
 
   // modula la ampltiud de la portadora con la modulante
   // opcionalmente, podemos escalar la señal
-  carrier.amp(modulator.scale(-1,1,1,-1));
+  carrier.amp(modulator.scale(-1, 1, 1, -1));
 
   // crea una FFT para analizar el audio
   fft = new p5.FFT();
 }
 
 function draw() {
-  background(30,30,30,100); // alpha
+  background(30, 30, 30, 100); // alpha
 
   // mapea la posición vertical del ratón (mouseY) a la frecuencia de la modulante entre 0 y 20 Hz
   let modFreq = map(mouseY, 0, height, 20, 0);
@@ -81,10 +79,10 @@ function drawWaveform() {
   stroke(240);
   strokeWeight(4);
   beginShape();
-  for (let i = 0; i<waveform.length; i++){
+  for (let i = 0; i < waveform.length; i++) {
     let x = map(i, 0, waveform.length, 0, width);
-    let y = map(waveform[i], -1, 1, -height/2, height/2);
-    vertex(x, y + height/2);
+    let y = map(waveform[i], -1, 1, -height / 2, height / 2);
+    vertex(x, y + height / 2);
   }
   endShape();
 }

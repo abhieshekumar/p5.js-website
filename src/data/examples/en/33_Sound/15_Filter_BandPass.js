@@ -32,7 +32,7 @@ function draw() {
   background(30);
 
   // Map mouseX to a bandpass freq from the FFT spectrum range: 10Hz - 22050Hz
-  filterFreq = map (mouseX, 0, width, 10, 22050);
+  filterFreq = map(mouseX, 0, width, 10, 22050);
   // Map mouseY to resonance/width
   filterWidth = map(mouseY, 0, height, 0, 90);
   // set filter parameters
@@ -43,9 +43,9 @@ function draw() {
   // h = energy / amplitude at that frequency
   let spectrum = fft.analyze();
   noStroke();
-  for (let i = 0; i< spectrum.length; i++){
+  for (let i = 0; i < spectrum.length; i++) {
     let x = map(i, 0, spectrum.length, 0, width);
     let h = -height + map(spectrum[i], 0, 255, height, 0);
-    rect(x, height, width/spectrum.length, h) ;
+    rect(x, height, width / spectrum.length, h);
   }
 }

@@ -39,15 +39,16 @@ function setup() {
 
   // song loaded during preload(), ready to play in setup()
   song.play();
-  background(0,255,0);
+  background(0, 255, 0);
 }
 
 function mousePressed() {
-  if ( song.isPlaying() ) { // .isPlaying() returns a boolean
+  if (song.isPlaying()) {
+    // .isPlaying() returns a boolean
     song.pause();
-    background(255,0,0);
+    background(255, 0, 0);
   } else {
     song.play(); // playback will resume from the pause position
-    background(0,255,0);
+    background(0, 255, 0);
   }
 }

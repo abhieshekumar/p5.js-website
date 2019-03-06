@@ -69,7 +69,7 @@ let modMaxDepth = 150;
 let modMinDepth = -150;
 
 function setup() {
-  let cnv = createCanvas(800,400);
+  let cnv = createCanvas(800, 400);
   noFill();
 
   carrier = new p5.Oscillator('sine');
@@ -83,7 +83,7 @@ function setup() {
 
   // add the modulator's output to modulate the carrier's frequency
   modulator.disconnect();
-  carrier.freq( modulator );
+  carrier.freq(modulator);
 
   // create an FFT to analyze the audio
   analyzer = new p5.FFT();
@@ -112,19 +112,26 @@ function draw() {
   stroke(255);
   strokeWeight(10);
   beginShape();
-  for (let i = 0; i < waveform.length; i++){
+  for (let i = 0; i < waveform.length; i++) {
     let x = map(i, 0, waveform.length, 0, width);
-    let y = map(waveform[i], -1, 1, -height/2, height/2);
-    vertex(x, y + height/2);
+    let y = map(waveform[i], -1, 1, -height / 2, height / 2);
+    vertex(x, y + height / 2);
   }
   endShape();
 
   strokeWeight(1);
   // add a note about what's happening
   text('Modulator Frequency: ' + modFreq.toFixed(3) + ' Hz', 20, 20);
-  text('Modulator Amplitude (Modulation Depth): ' + modDepth.toFixed(3), 20, 40);
-  text('Carrier Frequency (pre-modulation): ' + carrierBaseFreq + ' Hz', width/2, 20);
-
+  text(
+    'Modulator Amplitude (Modulation Depth): ' + modDepth.toFixed(3),
+    20,
+    40
+  );
+  text(
+    'Carrier Frequency (pre-modulation): ' + carrierBaseFreq + ' Hz',
+    width / 2,
+    20
+  );
 }
 
 // helper function to toggle sound

@@ -38,15 +38,16 @@ function setup() {
 
   // canción cargada durante preload(), lista para ser reproducida durante setup()
   song.play();
-  background(0,255,0);
+  background(0, 255, 0);
 }
 
 function mousePressed() {
-  if ( song.isPlaying() ) { // .isPlaying() retorna una variable booleana
+  if (song.isPlaying()) {
+    // .isPlaying() retorna una variable booleana
     song.pause();
-    background(255,0,0);
+    background(255, 0, 0);
   } else {
     song.play(); // la reproducción continuará desde el instante en que fue pausado.
-    background(0,255,0);
+    background(0, 255, 0);
   }
 }

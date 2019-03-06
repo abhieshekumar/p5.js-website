@@ -42,9 +42,9 @@ function draw() {
   let level = analyzer.getLevel();
 
   // usar el nivel para dibujar un rectángulo verde
-  let levelHeight = map(level, 0, .4, 0, height);
-  fill(100,250,100);
-  rect(0, height, width, - levelHeight);
+  let levelHeight = map(level, 0, 0.4, 0, height);
+  fill(100, 250, 100);
+  rect(0, height, width, -levelHeight);
 }
 
 function mousePressed() {
